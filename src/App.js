@@ -3,23 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+	
+		cards= ['Card1', 'Card2', 'Card3', 'Card4', 'Card5'];
+		list = this.cards.map(s => <li>{s}</li>);
+
   render() {
+	  	
     return (
+
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+	  {
+		<ul>{this.list}</ul>
+	  }
       </div>
     );
   }
