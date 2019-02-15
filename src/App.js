@@ -9,21 +9,20 @@ class App extends Component
 {
 	list =[];
 	display =this.list.map(s=> <li>{s}</li>);
+	//if you want to have state or props you need to have a constructor
 	constructor(props) 
 	{
 		super(props);
     this.state = {	value: '' };
-		this.addCard =this.addCard.bind(this);
-		this.onChangeValue = this.onChangeValue.bind(this);
 	}
 	makeForm()
 	{
 		return(
-			<form  onSubmit={this.addCard}>
+			<form  onSubmit={this.onAddCard}>
 			<div >
 				<label>
 					Enter Card:
-					<input type="text" ref="newCard" onChange={this.onChangeValue} />
+					<input type="text" ref="newCard" onChange={this.handleChangeValue} />
 				</label>
 			</div>
 			<button type="submit"	>Add Card</button>
@@ -31,11 +30,11 @@ class App extends Component
 			);
 	}
 
-	onChangeValue(event){
+	handleChangeValue= event=>{
 		this.setState({ value: event.target.value });
 	}
 
-	addCard(event){
+	onAddCard =event=>{
 		event.preventDefault();
 		console.log("Value:" + this.state.value)
 		this.list.push(this.state.value);
@@ -49,12 +48,8 @@ class App extends Component
     return (
 
 			<div className="App">
-			{
-				<div>
 					<ul>{this.display}</ul>
 						{this.makeForm()}
-				</div>
-			}
       </div>
     );
 	}
