@@ -8,13 +8,29 @@ import SignUp from './SignUp';
 
 class App extends Component 
 {
-	
+	constructor(props)
+	{
+		this.state = {param : ''};
+	}
+
   	render()
  {
     return (
 
-			<div >				
-					<SignUp/>         			
+			<div >
+					<Header/>	
+					<div>
+							
+							switch(this.state.page)
+							{
+								case 'SignUp':
+									return <SignUp/>;
+								case 'LoginPage':
+									return <LoginPage/>;
+							}
+					
+					</div>
+					<Footer/>     			
       </div>
     );
 	}

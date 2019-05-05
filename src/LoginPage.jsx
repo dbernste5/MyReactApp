@@ -24,14 +24,9 @@ class LoginPage extends Component
             headers: {
                 "Content-Type": "application/json"
               },
-        });
-        
-        
-        //get response
-        Response.json().then()
-
-        //see if response was true- then can log ing
-            //set up a session
+        }).then((response) => {console.log('response: ', response.status); response.json()}
+        ).done();
+         
         
     }
 
