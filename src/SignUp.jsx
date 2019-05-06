@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Redirect } from 'react-router';
 
 class SignUp extends Component
 {
@@ -11,7 +12,8 @@ class SignUp extends Component
             firstName: '',
             lastName: '',
             email: '',
-            phone: ''
+            phone: '',
+            signUpSuccess: false
         };
 
         this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -40,9 +42,9 @@ class SignUp extends Component
             <label>Username</label><br/>
             <input id="username" type="text" onChange={event => this.onChangeUserName(event)}></input><br/><br/>
             <label>Password</label><br/>
-            <input id="password" type="text" onChange={event => this.onChangePassword(event)}></input><br/><br/>
+            <input id="password" type="password" onChange={event => this.onChangePassword(event)}></input><br/><br/>
             <label>Confirm Password</label><br/>
-            <input id="confirmPassword" type="text" onChange={event => this.onChangeConfirmPassword(event)}></input><br/><br/>
+            <input id="confirmPassword" type="password" onChange={event => this.onChangeConfirmPassword(event)}></input><br/><br/>
             <button id= "signUpSubmit" type="submit" >Submit</button>
         </form>)
     }
@@ -72,7 +74,7 @@ class SignUp extends Component
     }
     onChangeConfirmPassword(event)
     {
-       //check if password matched nad display message
+       //check if password matched and display message
     }
     onSubmitForm(event)
     {
@@ -91,20 +93,34 @@ class SignUp extends Component
             headers: {
                 "Content-Type": "application/json"
               },
-        });
+        }).then((response) => {
+            if(response.status === 200)
+            {
+            this.setState({signUpSuccess: true});
+            }
+            console.log('response: ', response.status);
         
+        response.json()}
+        ).done();
+         
         console.log("After fetch");
-        //get response
+        
         
         
     }
     render()
     {
-        return(
-            <Fragment>
-                {this.form()}
-            </Fragment>
-        )
+        if(this.state.signUpSuccess) //user signed up successfully, now redirect to the login page
+        {
+            return <Redirect to='/LoginPage'/>;
+        }
+        else{ //user needs to sign up
+            return(
+                <Fragment>
+                    {this.form()}
+                </Fragment>
+            )
+        }
     }
 }
 export default SignUp

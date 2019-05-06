@@ -1,35 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
-import Home from './home';
 import Footer from './footer';
 import Header from './header';
-import SignUp from './SignUp';
+import Main from './Main';
+import Menu from './Menu';
 
 
 class App extends Component 
 {
-	constructor(props)
-	{
-		this.state = {param : ''};
-	}
-
+	
   	render()
  {
-    return (
+	
+	return (
 
 			<div >
-					<Header/>	
-					<div>
-							
-							switch(this.state.page)
-							{
-								case 'SignUp':
-									return <SignUp/>;
-								case 'LoginPage':
-									return <LoginPage/>;
-							}
-					
-					</div>
+					<Header/>
+					<Menu/>
+					<Main/>
 					<Footer/>     			
       </div>
     );

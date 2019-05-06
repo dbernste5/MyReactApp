@@ -1,21 +1,30 @@
-import React, { Component, Fragment } from 'react';
-
+import React, { Component } from 'react';
+import Cookies from 'js-cookie';
+import { Redirect } from 'react-router';
 
 class Home extends Component 
 {
-    constructor(props)
-    {
-        super(props);
-        this.state = {};
-    }
+	
+  	render()
+ {
 
-    render()
+    if(Cookies.get('sessionId')!=null)
     {
-        return(
-        <Fragment>            
-            <body>This is the Body!</body>
-        </Fragment>
-        )
+        return (
+
+			<div>
+                <h1>Home page: </h1>
+            </div>
+             );
+             //{Cookies.get('sessionId')} 
     }
+    else{
+        return <Redirect to='/LoginPage'/>;
+    }
+	
+	
+	}
+	
+
 }
-export default Home
+export default Home;
