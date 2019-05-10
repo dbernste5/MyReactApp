@@ -8,16 +8,21 @@ import Menu from './Menu';
 
 class App extends Component 
 {
-	
-  	render()
+	constructor(props)
+	{
+		super(props);
+		this.state= {loggedIn:false}
+	}
+
+	render()
  {
 	
 	return (
 
 			<div >
 					<Header/>
-					<Menu/>
-					<Main/>
+					<Menu loggedIn= {this.state.loggedIn}/>
+					<Main logInUser={()=>{this.setState({loggedIn: true})}}/>
 					<Footer/>     			
       </div>
     );

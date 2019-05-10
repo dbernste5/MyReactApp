@@ -5,7 +5,7 @@ import { Redirect } from 'react-router';
 class Home extends Component 
 {
 	
-  	render()
+render()
  {
 
     if(Cookies.get('sessionId')!=null)
@@ -13,10 +13,10 @@ class Home extends Component
         return (
 
 			<div>
-                <h1>Home page: </h1>
+                <h1>Home page: {Cookies.get('userName')} </h1>
             </div>
              );
-             //{Cookies.get('sessionId')} 
+            
     }
     else{
         return <Redirect to='/LoginPage'/>;

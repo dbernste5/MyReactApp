@@ -13,7 +13,8 @@ class SignUp extends Component
             lastName: '',
             email: '',
             phone: '',
-            signUpSuccess: false
+            signUpSuccess: false,
+            duplicateUsername: false
         };
 
         this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -32,19 +33,19 @@ class SignUp extends Component
         return(
         <form id="signUpForm" onSubmit={this.onSubmitForm}>
             <label>First Name</label><br/>
-            <input id="firstName" type="text" onChange={event => this.onChangeFirst(event)}></input><br/><br/>
+            <input id="firstName" type="text" onChange={event => this.onChangeFirst(event)} required='true'></input><br/><br/>
             <label>Last Name</label><br/>
-            <input id="lastName" type="text" onChange={event => this.onChangeLast(event)}></input><br/><br/>
+            <input id="lastName" type="text" onChange={event => this.onChangeLast(event)} required='true'></input><br/><br/>
             <label>Email</label><br/>
-            <input id="email" type="text" onChange={event => this.onChangeEmail(event)}></input><br/><br/>
+            <input id="email" type="text" onChange={event => this.onChangeEmail(event)} required='true'></input><br/><br/>
             <label>Phone Number</label><br/>
-            <input id="phone" type="text" onChange={event => this.onChangePhone(event)}></input><br/><br/>
+            <input id="phone" type="text" onChange={event => this.onChangePhone(event)} required='true'></input><br/><br/>
             <label>Username</label><br/>
-            <input id="username" type="text" onChange={event => this.onChangeUserName(event)}></input><br/><br/>
+            <input id="username" type="text" onChange={event => this.onChangeUserName(event)} required='true'></input><br/><br/>
             <label>Password</label><br/>
-            <input id="password" type="password" onChange={event => this.onChangePassword(event)}></input><br/><br/>
+            <input id="password" type="password" onChange={event => this.onChangePassword(event)} required='true'></input><br/><br/>
             <label>Confirm Password</label><br/>
-            <input id="confirmPassword" type="password" onChange={event => this.onChangeConfirmPassword(event)}></input><br/><br/>
+            <input id="confirmPassword" type="password" onChange={event => this.onChangeConfirmPassword(event)} required='true'></input><br/><br/>
             <button id= "signUpSubmit" type="submit" >Submit</button>
         </form>)
     }
@@ -96,7 +97,11 @@ class SignUp extends Component
         }).then((response) => {
             if(response.status === 200)
             {
-            this.setState({signUpSuccess: true});
+            this.setState({signUpSuccess: true, duplicateUsername: false});
+            }
+            else if(response.status === 409) //duplicate username
+            {
+                this.setState({duplicateUsername: true});
             }
             console.log('response: ', response.status);
         
@@ -114,9 +119,20 @@ class SignUp extends Component
         {
             return <Redirect to='/LoginPage'/>;
         }
-        else{ //user needs to sign up
+        else if(this.state.duplicateUsername)
+        {
             return(
                 <Fragment>
+                    <h2>Sign Up</h2>
+                    <h4>This username already exists.</h4>
+                    {this.form()}
+                </Fragment>
+            )
+
+        }else{ //user needs to sign up
+            return(
+                <Fragment>
+                    <h2>Sign Up</h2>
                     {this.form()}
                 </Fragment>
             )
