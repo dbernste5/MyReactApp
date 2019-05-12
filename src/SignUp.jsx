@@ -14,7 +14,8 @@ class SignUp extends Component
             email: '',
             phone: '',
             signUpSuccess: false,
-            duplicateUsername: false
+            duplicateUsername: false,
+            passwordConfirmed: true
         };
 
         this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -75,7 +76,12 @@ class SignUp extends Component
     }
     onChangeConfirmPassword(event)
     {
-       //check if password matched and display message
+       if(event.target.value != this.state.password)  {
+            this.setState({passwordConfirmed: false});
+       }
+       else{
+            this.setState({passwordConfirmed: true});
+       }
     }
     onSubmitForm(event)
     {
@@ -129,7 +135,17 @@ class SignUp extends Component
                 </Fragment>
             )
 
-        }else{ //user needs to sign up
+        }
+        else if(!this.state.passwordConfirmed) {
+            return(
+                <Fragment>
+                    <h2>Sign Up</h2>
+                    {this.form()}
+                    <h4>Your passwords do not match.</h4>
+                </Fragment>
+            )
+        }
+        else{ //user needs to sign up
             return(
                 <Fragment>
                     <h2>Sign Up</h2>
@@ -140,3 +156,5 @@ class SignUp extends Component
     }
 }
 export default SignUp
+
+
