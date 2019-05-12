@@ -76,7 +76,7 @@ class SignUp extends Component
     }
     onChangeConfirmPassword(event)
     {
-       if(event.target.value != this.state.password)  {
+       if(event.target.value !== this.state.password)  {
             this.setState({passwordConfirmed: false});
        }
        else{
@@ -86,35 +86,33 @@ class SignUp extends Component
     onSubmitForm(event)
     {
         event.preventDefault();
-        console.log("testing console- first name: " + this.state.firstName);
-        console.log(this.state.username);
-        console.log(this.state.firstName);
-        console.log(this.state.lastName);
-        console.log(this.state.email);
-        console.log(this.state.password);
-        console.log(this.state.phone);
-        console.log("before fetch");
-        fetch("/user", {
-            method: "POST",
-            body: JSON.stringify(this.state),
-            headers: {
-                "Content-Type": "application/json"
-              },
-        }).then((response) => {
-            if(response.status === 200)
-            {
-            this.setState({signUpSuccess: true, duplicateUsername: false});
-            }
-            else if(response.status === 409) //duplicate username
-            {
-                this.setState({duplicateUsername: true});
-            }
-            console.log('response: ', response.status);
         
-        response.json()}
-        ).done();
-         
-        console.log("After fetch");
+        if(this.state.passwordConfirmed){
+            fetch("/user", {
+                method: "POST",
+                body: JSON.stringify(this.state),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            }).then((response) => {
+                if(response.status === 200)
+                {
+                    this.setState({signUpSuccess: true});
+                }
+                else if(response.status === 409) //duplicate username
+                {
+                    this.setState({duplicateUsername: true});
+                }
+                else{
+                    this.setState({duplicateUsername: false});
+                }
+                console.log('response: ', response.status);
+            
+            response.json()}
+            ).done();
+            
+            console.log("After fetch");
+        }
         
         
         

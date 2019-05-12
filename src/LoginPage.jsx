@@ -34,12 +34,12 @@ class LoginPage extends Component
                 "Content-Type": "application/json"
               },
         }).then((response) => {
-            if(response.status==200)
+            if(response.status===200)
             {
                 this.setState({validCredentials: true, loggedIn:true});
                 this.props.logInUser();           
             }
-            else if (response.status == 401)
+            else if (response.status === 401)
             {
                 this.setState({validCredentials: false});
             }      
