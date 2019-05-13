@@ -7,6 +7,9 @@ class StickyView extends Component
         super(props);
         this.state = { };
         this.stickies = [];
+
+        this.stickynote = this.stickynote.bind(this);
+        this.fetchStickies = this.fetchStickies.bind(this);
     }
 
     componentDidMount()
@@ -16,14 +19,22 @@ class StickyView extends Component
         //get the logged in user, send the user ID to the fetch method to get the stickies
         //from the session
 
-        fetchStickies();
+        this.fetchStickies();
 
     //put the notes we get from the DB into a sticky object so we an render them for viewing
-        <li>
-        <h2></h2>   
-        <p><p>
-        </li>
+       this.stickynote(); //call this method for each row from db
     }
+
+   
+    stickynote(title, body)
+    {
+        return(
+           <li>
+             <h2>{title}</h2>
+             <p>{body}</p>
+            </li>
+        )
+    } 
 
     fetchStickies()
     {
@@ -33,7 +44,7 @@ class StickyView extends Component
     render()
     {
         //here we render the fragment as the list elements from the mapped list.
-        return        (
+        return(
             <Fragment>
                <ul>
                     {this.stickyNotes} 

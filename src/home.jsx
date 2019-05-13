@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Cookies from 'js-cookie';
 import { Redirect } from 'react-router';
+import {Link }from 'react-router-dom';
 
 class Home extends Component 
 {
@@ -12,9 +13,13 @@ render()
     {
         return (
 
-			<div>
+			<Fragment>
                 <h1>Home page: {Cookies.get('userName')} </h1>
-            </div>
+                <ul>
+                    <li><Link to='/addSticky'>Add Stickies</Link></li> 
+                    <li><Link to='/viewStickies'>View Stickies Here</Link></li>
+                </ul>
+            </Fragment>
              );
             
     }
