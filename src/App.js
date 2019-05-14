@@ -22,7 +22,7 @@ class App extends Component
 			<div >
 					<Header/>
 					<Menu loggedIn= {this.state.loggedIn}/>
-					<Main setUserID= {(ID)=>{this.setState({userID: ID})}} logInUser={()=>{this.setState({loggedIn: true})}}/>
+					<Main userID = {this.state.userID} setUserID= {(ID)=>{this.setState({userID: ID})}} logInUser={()=>{this.setState({loggedIn: true})}}/>
 					<Footer/>     			
       </div>
     );

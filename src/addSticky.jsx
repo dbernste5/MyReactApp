@@ -9,8 +9,8 @@ class addSticky extends Component
         this.state = {
             title: '',
             body: '',
-            stickySuccess: false,
-            userID: this.props.userID
+            userID: this.props.userID,
+            stickySuccess: false
         };
 
         this.onSubmitForm = this.onSubmitForm.bind(this);

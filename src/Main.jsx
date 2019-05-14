@@ -10,16 +10,23 @@ import StickyView from './StickyView';
 const Main=(props)=>(
    
  
-
-   
+//render={() => <addSticky userID={props.userID}/>}
+//<Route path='/addSticky' component={addSticky}/>
+  
+/*
+<Route
+  path='/dashboard'
+  render={(props) => <Dashboard {...props} isAuthed={true} />}
+/>
+*/ 
    <main>
       <Switch>
         <Route path='/LoginPage'  
                render={() => <LoginPage logInUser={props.logInUser} setUserID = {props.setUserID}/>} />
+        <Route path='/addSticky' render={()=> <addSticky userID={props.userID}/>}/>
         <Route path='/SignUp' component={SignUp}/>
         <Route path='/Home' component={Home}/>
         <Route path='/Logout' component={Logout}/>
-        <Route path='/addSticky' component={addSticky}/>
         <Route path='/viewStickies' component={StickyView}/> 
         
 

@@ -34,23 +34,22 @@ class LoginPage extends Component
                 "Content-Type": "application/json"
               },
         }
-        ).then(response=>response.json())
-        .then((response) => {
+        ).then(response=> {
             if(response.status===200)
             {
                 this.setState({validCredentials: true, loggedIn:true});
                 this.props.logInUser();  
-                
-                console.log("userid: "+response);
-                this.props.setUserID(response);         
+                response.json().then(data=>{
+                        console.log("userid: "+ data);
+                        this.props.setUserID(data);
+                    })
+                         
             }
             else if (response.status === 401)
             {
                 this.setState({validCredentials: false});
             }      
-        }
-        ).done();
-         
+        }).done();  
         
     }
 
