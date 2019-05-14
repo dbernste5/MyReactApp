@@ -38,7 +38,7 @@ class SignUp extends Component
             <label>Last Name</label><br/>
             <input id="lastName" type="text" onChange={event => this.onChangeLast(event)} required='true'></input><br/><br/>
             <label>Email</label><br/>
-            <input id="email" type="text" onChange={event => this.onChangeEmail(event)} required='true'></input><br/><br/>
+            <input id="email" type="email" onChange={event => this.onChangeEmail(event)} required='true' placeholder="me@example.com"></input><br/><br/>
             <label>Phone Number</label><br/>
             <input id="phone" type="text" onChange={event => this.onChangePhone(event)} required='true'></input><br/><br/>
             <label>Username</label><br/>

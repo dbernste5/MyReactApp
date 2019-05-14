@@ -8,7 +8,7 @@ class LoginPage extends Component
     constructor(props)
     {
         super(props);
-        this.state={  username: '', password: '', validCredentials: true, loggedIn:false};
+        this.state={ username: '', password: '', validCredentials: true, loggedIn:false};
 
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangeUserName = this.onChangeUserName.bind(this);
@@ -33,17 +33,22 @@ class LoginPage extends Component
             headers: {
                 "Content-Type": "application/json"
               },
-        }).then((response) => {
+        }
+        ).then(response=>response.json())
+        .then((response) => {
             if(response.status===200)
             {
                 this.setState({validCredentials: true, loggedIn:true});
-                this.props.logInUser();           
+                this.props.logInUser();  
+                
+                console.log("userid: "+response);
+                this.props.setUserID(response);         
             }
             else if (response.status === 401)
             {
                 this.setState({validCredentials: false});
             }      
-            response.json()}
+        }
         ).done();
          
         

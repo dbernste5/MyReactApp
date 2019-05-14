@@ -9,7 +9,8 @@ class addSticky extends Component
         this.state = {
             title: '',
             body: '',
-            stickySuccess: false
+            stickySuccess: false,
+            userID: this.props.userID
         };
 
         this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -50,6 +51,7 @@ class addSticky extends Component
             }).then((response) => {
                 if(response.status===200)
                 {
+                    console.log("In status 200 if.");
                     this.setState({stickySuccess: true});
                 }
                 else{
@@ -66,7 +68,8 @@ class addSticky extends Component
     
     render()
     {
-        if(this.stickySuccess)
+        console.log("stickySuccess: "+this.state.stickySuccess)
+        if(this.state.stickySuccess)
         {
             return(
                 <Fragment>

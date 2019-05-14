@@ -11,7 +11,7 @@ class App extends Component
 	constructor(props)
 	{
 		super(props);
-		this.state= {loggedIn:false}
+		this.state= {loggedIn:false, userID: -1}
 	}
 
 	render()
@@ -22,7 +22,7 @@ class App extends Component
 			<div >
 					<Header/>
 					<Menu loggedIn= {this.state.loggedIn}/>
-					<Main logInUser={()=>{this.setState({loggedIn: true})}}/>
+					<Main setUserID= {(ID)=>{this.setState({userID: ID})}} logInUser={()=>{this.setState({loggedIn: true})}}/>
 					<Footer/>     			
       </div>
     );

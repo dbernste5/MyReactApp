@@ -15,7 +15,7 @@ const Main=(props)=>(
    <main>
       <Switch>
         <Route path='/LoginPage'  
-               render={() => <LoginPage logInUser={props.logInUser}/>} />
+               render={() => <LoginPage logInUser={props.logInUser} setUserID = {props.setUserID}/>} />
         <Route path='/SignUp' component={SignUp}/>
         <Route path='/Home' component={Home}/>
         <Route path='/Logout' component={Logout}/>
