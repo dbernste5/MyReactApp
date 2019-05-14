@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-class addSticky extends Component
+class AddSticky extends Component
 {
     constructor(props)
     {
         super(props);
+        console.log("In addSticky Userid: "+props.userID);
         this.state = {
             title: '',
             body: '',
-            userID: this.props.userID,
+            userID: props.userID,
             stickySuccess: false
         };
 
@@ -41,7 +42,7 @@ class addSticky extends Component
     onSubmitForm(event)
     {
         event.preventDefault();
-        
+        console.log("userID"+this.state.userID);   
         fetch("/addStickynote", {
                 method: "POST",
                 body: JSON.stringify(this.state),
@@ -92,6 +93,6 @@ class addSticky extends Component
     }
 }
 
-export default addSticky
+export default AddSticky
 
 

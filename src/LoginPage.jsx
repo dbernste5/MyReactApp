@@ -40,7 +40,7 @@ class LoginPage extends Component
                 this.setState({validCredentials: true, loggedIn:true});
                 this.props.logInUser();  
                 response.json().then(data=>{
-                        console.log("userid: "+ data);
+                        console.log("In login userid: "+ data);
                         this.props.setUserID(data);
                     })
                          

@@ -11,18 +11,19 @@ class App extends Component
 	constructor(props)
 	{
 		super(props);
-		this.state= {loggedIn:false, userID: -1}
+		this.state= {loggedIn:false, userID: -1};
 	}
 
 	render()
  {
-	
+	console.log("In app UserID: "+this.state.userID);
 	return (
 
 			<div >
 					<Header/>
 					<Menu loggedIn= {this.state.loggedIn}/>
-					<Main userID = {this.state.userID} setUserID= {(ID)=>{this.setState({userID: ID})}} logInUser={()=>{this.setState({loggedIn: true})}}/>
+					<Main setUserID= {(ID)=>{this.setState({userID: ID})}} userID = {this.state.userID} 
+								logInUser={()=>{this.setState({loggedIn: true})}}/>
 					<Footer/>     			
       </div>
     );

@@ -4,7 +4,7 @@ import LoginPage from './LoginPage';
 import SignUp from './SignUp';
 import Home from './Home';
 import Logout from './Logout';
-import addSticky from './addSticky';
+import AddSticky from './addSticky';
 import StickyView from './StickyView';
 
 const Main=(props)=>(
@@ -23,7 +23,8 @@ const Main=(props)=>(
       <Switch>
         <Route path='/LoginPage'  
                render={() => <LoginPage logInUser={props.logInUser} setUserID = {props.setUserID}/>} />
-        <Route path='/addSticky' render={()=> <addSticky userID={props.userID}/>}/>
+        <Route path='/addSticky'
+               render={() => <AddSticky userID={props.userID}/>}/>
         <Route path='/SignUp' component={SignUp}/>
         <Route path='/Home' component={Home}/>
         <Route path='/Logout' component={Logout}/>
