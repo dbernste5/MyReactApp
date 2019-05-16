@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
+
 
 class LoginPage extends Component
 {
@@ -49,7 +49,7 @@ class LoginPage extends Component
             {
                 this.setState({validCredentials: false});
             }      
-        }).done();  
+        })
         
     }
 

@@ -60,8 +60,8 @@ class AddSticky extends Component
                 }
                 console.log('response: ', response.status);
             
-            response.json()}
-            ).done();
+            }
+            )
     }
         
         

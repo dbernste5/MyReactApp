@@ -9,8 +9,6 @@ import StickyView from './StickyView';
 
 const Main=(props)=>(
    
- 
-
    <main>
       <Switch>
         <Route path='/LoginPage'  
@@ -21,12 +19,7 @@ const Main=(props)=>(
         <Route path='/Home' component={Home}/>
         <Route path='/Logout' component={Logout}/>
         <Route path='/viewStickies' render={() => <StickyView userID={props.userID}/>}/> 
-        
-
       </Switch>
     </main>
-   
-)
-  
-  
-  export default Main
+) 
+export default Main

@@ -14,7 +14,6 @@ class Header extends Component
         return(
         <Fragment>
             <header>               
-                <h1>This is the header!</h1>
                 <img src={stickiesLogo} alt="stickiesLogo" ></img>
             </header>            
         </Fragment>

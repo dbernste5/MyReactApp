@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import Footer from './footer';
 import Header from './header';
@@ -19,13 +19,13 @@ class App extends Component
 	console.log("In app UserID: "+this.state.userID);
 	return (
 
-			<div >
+			<Fragment >
 					<Header/>
 					<Menu loggedIn= {this.state.loggedIn}/>
 					<Main setUserID= {(ID)=>{this.setState({userID: ID})}} userID = {this.state.userID} 
 								logInUser={()=>{this.setState({loggedIn: true})}}/>
 					<Footer/>     			
-      </div>
+      </Fragment>
     );
 	}
 	
