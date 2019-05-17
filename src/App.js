@@ -20,10 +20,19 @@ class App extends Component
 	return (
 
 			<Fragment >
+				<table>
+					<tr>
+						<th>
 					<Header/>
+					</th>
+					<th>
 					<Menu loggedIn= {this.state.loggedIn}/>
+					</th>
+					</tr>
+					</table>
 					<Main setUserID= {(ID)=>{this.setState({userID: ID})}} userID = {this.state.userID} 
 								logInUser={()=>{this.setState({loggedIn: true})}}/>
+					
 					<Footer/>     			
       </Fragment>
     );
