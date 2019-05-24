@@ -3,10 +3,8 @@ import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 
 
-class LoginPage extends Component
-{
-    constructor(props)
-    {
+class LoginPage extends Component {
+    constructor(props) {
         super(props);
         this.state={ username: '', password: '', validCredentials: true, loggedIn:false};
 
@@ -32,8 +30,7 @@ class LoginPage extends Component
               },
         }
         ).then(response=> {
-            if(response.status===200)
-            {
+            if(response.status===200){
                 this.setState({validCredentials: true, loggedIn:true});
                 this.props.logInUser();  
                 response.json().then(data=> {
