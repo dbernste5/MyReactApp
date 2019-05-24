@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 
 class Menu extends Component {
+
     constructor(props) {
         super(props);
     }
-
-    render() {
+    render () {
         //user is logged in
         if(this.props.loggedIn) {
             return(
