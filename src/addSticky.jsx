@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-class AddSticky extends Component
-{
-    constructor(props)
-    {
+class AddSticky extends Component {
+    constructor(props) {
         super(props);
         console.log("In addSticky Userid: "+props.userID);
         this.state = {
@@ -19,8 +17,7 @@ class AddSticky extends Component
         this.onChangeBody = this.onChangeBody.bind(this);  
     }
 
-    form()
-    {
+    form() {
         return(
         <form id="addStickyForm" onSubmit={this.onSubmitForm}>
             <label>Title</label><br/>
@@ -30,17 +27,14 @@ class AddSticky extends Component
             <button id= "addStickySubmit" type="submit" >Add Sticky</button>
         </form>)
     }
-    onChangeTitle(event)
-    {
+    onChangeTitle(event) {
         this.setState({title: event.target.value});
     }
-    onChangeBody(event)
-    {
+    onChangeBody(event) {
         this.setState({body: event.target.value});
     }
     
-    onSubmitForm(event)
-    {
+    onSubmitForm(event) {
         event.preventDefault();
         console.log("userID"+this.state.userID);   
         fetch("/addStickynote", {
@@ -63,15 +57,10 @@ class AddSticky extends Component
             }
             )
     }
-        
-        
-        
-    
-    render()
-    {
+
+    render() {
         console.log("stickySuccess: "+this.state.stickySuccess)
-        if(this.state.stickySuccess)
-        {
+        if(this.state.stickySuccess) {
             return(
                 <Fragment>
                     <h2>Add Sticky Note</h2>
@@ -81,8 +70,7 @@ class AddSticky extends Component
                 </Fragment>
             )
         }
-        else
-        {
+        else {
             return(
                     <Fragment>
                         <h2>Add Sticky Note</h2>

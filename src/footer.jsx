@@ -1,15 +1,12 @@
 import React, { Component, Fragment } from 'react';
 
-class Footer extends Component
-{
-    constructor(props)
-    {
+class Footer extends Component {
+    constructor(props) {
         super(props);
         this.state = {};
     }
 
-    render()
-    {
+    render() {
         return        (
             <Fragment>
                 <footer>

@@ -1,16 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import stickiesLogo from './stickiesLogo.jpg';
 
-class Header extends Component
-{
-    constructor(props)
-    {
+class Header extends Component {
+    constructor(props) {
         super(props);
         this.state = {};
     }
 
-    render()
-    {
+    render() {
         return(
         <Fragment>
             <header>               

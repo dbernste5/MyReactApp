@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router';
 
-class SignUp extends Component
-{
-    constructor(props)
-    {
+class SignUp extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             username: '',
@@ -29,8 +27,7 @@ class SignUp extends Component
         
     }
 
-    form()
-    {
+    form() {
         return(
         <form id="signUpForm" onSubmit={this.onSubmitForm}>
             <label>First Name</label><br/>
@@ -50,44 +47,36 @@ class SignUp extends Component
             <button id= "signUpSubmit" type="submit" >Submit</button>
         </form>)
     }
-    onChangeFirst(event)
-    {
+    onChangeFirst(event) {
         this.setState({firstName: event.target.value});
     }
-    onChangeLast(event)
-    {
+    onChangeLast(event) {
         this.setState({lastName: event.target.value});
     }
-    onChangeEmail(event)
-    {
+    onChangeEmail(event) {
         this.setState({email: event.target.value});
     }
-    onChangePhone(event)
-    {
+    onChangePhone(event) {
         this.setState({phone: event.target.value});
     }
-    onChangeUserName(event)
-    {
+    onChangeUserName(event) {
         this.setState({username: event.target.value});
     }
-    onChangePassword(event)
-    {
+    onChangePassword(event) {
         this.setState( {password: event.target.value});
     }
-    onChangeConfirmPassword(event)
-    {
-       if(event.target.value !== this.state.password)  {
+    onChangeConfirmPassword(event) {
+       if(event.target.value !== this.state.password) {
             this.setState({passwordConfirmed: false});
-       }
+        }
        else{
             this.setState({passwordConfirmed: true});
        }
     }
-    onSubmitForm(event)
-    {
+    onSubmitForm(event) {
         event.preventDefault();
         
-        if(this.state.passwordConfirmed){
+        if(this.state.passwordConfirmed) {
             fetch("/user", {
                 method: "POST",
                 body: JSON.stringify(this.state),
@@ -95,36 +84,30 @@ class SignUp extends Component
                     "Content-Type": "application/json"
                 },
             }).then((response) => {
-                if(response.status === 200)
-                {
+                if(response.status === 200) {
                     this.setState({signUpSuccess: true});
                 }
-                else if(response.status === 409) //duplicate username
-                {
+                //duplicate username
+                else if(response.status === 409) {
                     this.setState({duplicateUsername: true});
                 }
-                else{
+                else {
                     this.setState({duplicateUsername: false});
                 }
                 console.log('response: ', response.status);
             
             response.json()}
             )
-            
             console.log("After fetch");
         }
-        
-        
-        
+
     }
-    render()
-    {
-        if(this.state.signUpSuccess) //user signed up successfully, now redirect to the login page
-        {
+    render() {
+        //user signed up successfully, now redirect to the login page
+        if(this.state.signUpSuccess) {
             return <Redirect to='/LoginPage'/>;
         }
-        else if(this.state.duplicateUsername)
-        {
+        else if(this.state.duplicateUsername) {
             return(
                 <Fragment>
                     <h2>Sign Up</h2>
@@ -142,8 +125,7 @@ class SignUp extends Component
                     <h4>Your passwords do not match.</h4>
                 </Fragment>
             )
-        }
-        else{ //user needs to sign up
+        } else { //user needs to sign up
             return(
                 <Fragment>
                     <h2>Sign Up</h2>

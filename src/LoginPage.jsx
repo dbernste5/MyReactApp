@@ -15,17 +15,14 @@ class LoginPage extends Component
         this.onSubmitForm = this.onSubmitForm.bind(this);
     }
 
-    onChangeUserName(event)
-    {
+    onChangeUserName(event) {
         this.setState({username: event.target.value});
     }
-    onChangePassword(event)
-    {
+    onChangePassword(event) {
         this.setState( {password: event.target.value});
     }
     
-    onSubmitForm(event)
-    {
+    onSubmitForm(event) {
         event.preventDefault();
         fetch("/login", {
             method: "POST",
@@ -39,14 +36,12 @@ class LoginPage extends Component
             {
                 this.setState({validCredentials: true, loggedIn:true});
                 this.props.logInUser();  
-                response.json().then(data=>{
+                response.json().then(data=> {
                         console.log("In login userid: "+ data);
                         this.props.setUserID(data);
                     })
                          
-            }
-            else if (response.status === 401)
-            {
+            } else if (response.status === 401) {
                 this.setState({validCredentials: false});
             }      
         })
@@ -55,29 +50,27 @@ class LoginPage extends Component
 
 
 
-    render()
-    {
-        if(this.state.loggedIn) //already logged in           
-        {
+    render() {
+        //already logged in
+        if(this.state.loggedIn) {
             return <Redirect to='/Home'/>;
         }   
-        else  if(this.state.validCredentials) //didnt yet enter invalid entry....
-       {     return( 
-            <Fragment>
-                <h2>Login</h2>
-                    <form id="LoginForm" onSubmit={this.onSubmitForm}>
-                        <label>Username</label><br/>
-                        <input id="username" type="text" onChange={event => this.onChangeUserName(event)}></input><br/><br/>
-                        
-                        <label>Password</label><br/>
-                        <input id="password" type="password" onChange={event => this.onChangePassword(event)}></input><br/><br/>
-                        <button id= "LoginSubmit" type="submit" >Login</button>
-                    </form>
-                    <Link to='/SignUp'>New User? Sign up</Link>
+        //didnt yet enter invalid entry....
+        else if(this.state.validCredentials) {
+            return( 
+                <Fragment>
+                    <h2>Login</h2>
+                        <form id="LoginForm" onSubmit={this.onSubmitForm}>
+                            <label>Username</label><br/>
+                            <input id="username" type="text" onChange={event => this.onChangeUserName(event)}></input><br/><br/>
+                            <label>Password</label><br/>
+                            <input id="password" type="password" onChange={event => this.onChangePassword(event)}></input><br/><br/>
+                            <button id= "LoginSubmit" type="submit" >Login</button>
+                        </form>
+                        <Link to='/SignUp'>New User? Sign up</Link>
                 </Fragment>
             );
-        }
-        else{ //invalid credentials
+        } else { //invalid credentials
             return( 
                 
                 <Fragment>

@@ -6,16 +6,13 @@ import Main from './Main';
 import Menu from './Menu';
 
 
-class App extends Component 
-{
-	constructor(props)
-	{
+class App extends Component {
+	constructor(props) {
 		super(props);
 		this.state= {loggedIn:false, userID: -1};
 	}
 
-	render()
- {
+	render() {
 	console.log("In app UserID: "+this.state.userID);
 	return (
 
@@ -30,19 +27,14 @@ class App extends Component
 					</td>
 					</tr>
 					</table>
-					<Main setUserID= {(ID)=>{this.setState({userID: ID})}} 
-								userID = {this.state.userID} 
+					<Main setUserID= {(ID)=>{this.setState({userID: ID})}}
+								userID = {this.state.userID}
 								logInUser={()=>{this.setState({loggedIn: true})}}
 								logoutUser={()=>{this.setState({loggedIn:false})}}/>
 					
-					<Footer/>     			
-      </Fragment>
-    );
+					<Footer/>
+			</Fragment>
+		);
 	}
-	
-
 }
 export default App;
-
-
-

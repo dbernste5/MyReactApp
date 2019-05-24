@@ -3,27 +3,22 @@ import Cookies from 'js-cookie';
 import {Link }from 'react-router-dom';
 import './sticky.css';
 
-class StickyView extends Component
-{
-    constructor(props)
-    {
+class StickyView extends Component {
+    constructor(props) {
         super(props);
         this.state = { 
             showStickies: false,
             stickyList: []
-         };
-        
+        };
         this.fetchStickies = this.fetchStickies.bind(this);
     }
 
-    componentDidMount()
-    {
+    componentDidMount() {
         this.fetchStickies(this.props.userID);
         console.log('componentDidMount');
     }
 
-    fetchStickies(userID)
-    {
+    fetchStickies(userID) {
         //get the relevant stickies from the DB and map them to a list item
         fetch("/userStickies", {
             method: "POST",
@@ -32,10 +27,9 @@ class StickyView extends Component
                 "Content-Type": "application/json"
             }
         }).then((response) => {
-            if(response.status===200)
-            {
+            if(response.status===200) {
                 response.json().then(
-                    (data)=>{ 
+                    (data)=> { 
                         console.log('looping thru the data after .json():\n');
                         console.log('the keys from object.keys: '+Object.keys(data));
                     for(var key in data) {
@@ -47,9 +41,8 @@ class StickyView extends Component
                             for (var k in value) {
                                 if (value.hasOwnProperty(k)) {
                                     console.log(k + " -> " + value[k]);
-                                    if(k === "Title")
-                                    {
-                                       title = value[k];
+                                    if(k === "Title") {
+                                        title = value[k];
                                     }else if(k ==="Body"){
                                        body = value[k];
                                     }
@@ -68,12 +61,12 @@ class StickyView extends Component
                 
                 console.log("state set");
             }
-            else if(response.status===204){
+            else if(response.status===204) {
                 //user has no stickies to show
                 this.state.stickyList.push('You have no saved stickies');
                 this.setState({showStickies: true });
             }
-            else{
+            else {
                 this.setState({showStickies: false});
             }
             console.log('response: ', response.status);
@@ -83,10 +76,8 @@ class StickyView extends Component
     
     }
 
-    render()
-    {
-        if(this.state.showStickies)
-        {
+    render() {
+        if(this.state.showStickies) {
             this.list2 = this.state.stickyList.map(s=> <li >{s}</li>);
            console.log('in render: the list after we map it: '+this.list2);
             return(
@@ -100,7 +91,7 @@ class StickyView extends Component
                 </Fragment>
             )
         }
-        else{
+        else {
             //cudnt load user stickies "an error has occurred"
             return(
                 <Fragment> 

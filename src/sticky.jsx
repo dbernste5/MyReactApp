@@ -1,16 +1,13 @@
 import React, { Component, Fragment } from 'react';
 
-class sticky extends Component
-{
-    constructor(props)
-    {
+class sticky extends Component {
+    constructor(props) {
         super(props);
 
         this.state={}
     }
 
-    stickynote(title, body)
-    {
+    stickynote(title, body) {
         return(
            <li>
              <h2>{title}</h2>
@@ -20,17 +17,13 @@ class sticky extends Component
     }
 
 
-    render()
-    {
+    render() {
         return(
             <Fragment>
             {this.stickynote(title, body)};
             </Fragment>
         )
     }
-    
-
-
 }
 
 export default sticky;
