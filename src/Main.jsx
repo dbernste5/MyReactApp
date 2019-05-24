@@ -17,7 +17,7 @@ const Main=(props)=>(
                render={() => <AddSticky userID={props.userID}/>}/>
         <Route path='/SignUp' component={SignUp}/>
         <Route path='/Home' component={Home}/>
-        <Route path='/Logout' component={Logout}/>
+        <Route path='/Logout' render={()=><Logout logoutUser={props.logoutUser}/>}/>
         <Route path='/viewStickies' render={() => <StickyView userID={props.userID}/>}/> 
       </Switch>
     </main>

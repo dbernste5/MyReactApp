@@ -2,10 +2,14 @@
     margin:0;
     padding:0;
   }
+    
+
+
   body{
     font-family:arial,sans-serif;
     font-size:100%;
-    margin:3em;
+     margin-left:3em;
+     margin-right: 3em;
     background:#666;
     color:#fff;
   }
@@ -20,37 +24,45 @@
     overflow:hidden;
     padding:3em;
   }
-  ul li a {
+ /* ul li a {
     text-decoration:none;
-    color:#000;
+    color: #334455;
     background:#ffc;
     display:block;
-    height:10em;
-    width:10em;
+    /*height:10em;
+    width:10em;*/
+   /* padding:1em;*/
+    /*-moz-box-shadow:5px 5px 7px rgba(33,33,33,1);*/
+   /* -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);*/
+   /* box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+   /*-moz-transition:-moz-transform .15s linear;*/
+    /*-o-transition:-o-transform .15s linear;*/
+   /* -webkit-transition:-webkit-transform .15s linear;
+  }*/
+
+  #stickydisplay{
+    text-decoration:none;
+    color:#354;
+    /*background:#ffc;*/
+
+    display:block;
+    height:3em;
+    width:5em;
     padding:1em;
-    -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
-    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
-    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+   /* -moz-box-shadow:2.5px 2.5px 4px rgba(33,33,33,1);*/
+   /* -webkit-box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);*/
+   /* box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);*/
     -moz-transition:-moz-transform .15s linear;
     -o-transition:-o-transform .15s linear;
     -webkit-transition:-webkit-transform .15s linear;
   }
 
-  .menu{
-    text-decoration:none;
-    color:#000;
-    background:#ffc;
-    display:block;
-    height:3em;
-    width:5em;
-    padding:1em;
-    -moz-box-shadow:2.5px 2.5px 4px rgba(33,33,33,1);
-    -webkit-box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);
-    box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);
-    -moz-transition:-moz-transform .15s linear;
-    -o-transition:-o-transform .15s linear;
-    -webkit-transition:-webkit-transform .15s linear;
+  img{
+    width: 60%;
+    height: 60%;
+    min-width: 25px;
   }
+
   ul li{
     margin:1em;
     float:left;
@@ -102,6 +114,7 @@
     position:relative;
     z-index:5;
   }
+
   ol{text-align:center;}
   ol li{display:inline;padding-right:1em;}
   ol li a {color:#fff;}

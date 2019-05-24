@@ -6,9 +6,10 @@ class Logout extends Component
 {
     
 
-    render()
+    render(props)
     {   
         fetch("/logout", {method: "POST",});
+        this.props.logoutUser();
         return <Redirect to='/LoginPage'/>;
     }
 

@@ -22,16 +22,18 @@ class App extends Component
 			<Fragment >
 				<table>
 					<tr>
-						<th>
+						<td>
 					<Header/>
-					</th>
-					<th>
+					</td>
+					<td>
 					<Menu loggedIn= {this.state.loggedIn}/>
-					</th>
+					</td>
 					</tr>
 					</table>
-					<Main setUserID= {(ID)=>{this.setState({userID: ID})}} userID = {this.state.userID} 
-								logInUser={()=>{this.setState({loggedIn: true})}}/>
+					<Main setUserID= {(ID)=>{this.setState({userID: ID})}} 
+								userID = {this.state.userID} 
+								logInUser={()=>{this.setState({loggedIn: true})}}
+								logoutUser={()=>{this.setState({loggedIn:false})}}/>
 					
 					<Footer/>     			
       </Fragment>

@@ -88,12 +88,12 @@ class StickyView extends Component
         if(this.state.showStickies)
         {
             this.list2 = this.state.stickyList.map(s=> <li >{s}</li>);
-            console.log('in render: the list after we map it: '+this.list2);
+           console.log('in render: the list after we map it: '+this.list2);
             return(
                 <Fragment>
                     <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css"/> 
                     <h3>Stickies for {Cookies.get('userName')}</h3><br/>
-                    <ul>
+                    <ul id='stickydisplay'>
                         {this.list2} 
                    </ul>
                    <br/><Link to='/addSticky'>Add New Sticky</Link>
