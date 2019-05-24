@@ -30,7 +30,7 @@ class LoginPage extends Component {
               },
         }
         ).then(response=> {
-            if(response.status===200){
+            if(response.status===200) {
                 this.setState({validCredentials: true, loggedIn:true});
                 this.props.logInUser();  
                 response.json().then(data=> {
