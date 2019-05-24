@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 
-class Menu extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-    render () {
+const Menu = (props) => {
         //user is logged in
-        if(this.props.loggedIn) {
+        if (props.loggedIn) {
             return(
                 <ul>
                     <li class='menu'> <Link to='/Home'>Home</Link> </li>
@@ -26,6 +21,6 @@ class Menu extends Component {
                 </ul>
             );
         }
-    }
-}
+    };
+
 export default Menu;
