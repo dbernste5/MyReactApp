@@ -4,12 +4,11 @@ import { Link } from 'react-router-dom';
 class AddSticky extends Component {
     constructor(props) {
         super(props);
-        console.log("In addSticky Userid: "+props.userID);
         this.state = {
             title: '',
             body: '',
-            userID: props.userID,
-            stickySuccess: false
+            stickySuccess: false,
+            errorMessage: ''
         };
 
         this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -36,8 +35,7 @@ class AddSticky extends Component {
     
     onSubmitForm(event) {
         event.preventDefault();
-        console.log("userID"+this.state.userID);   
-        fetch("/addStickynote", {
+        fetch("/stickynote", {
                 method: "POST",
                 body: JSON.stringify(this.state),
                 headers: {
@@ -46,20 +44,16 @@ class AddSticky extends Component {
             }).then((response) => {
                 if(response.status===200)
                 {
-                    console.log("In status 200 if.");
                     this.setState({stickySuccess: true});
                 }
                 else{
-                    this.setState({stickySuccess: false});
-                }
-                console.log('response: ', response.status);
-            
+                    this.setState({stickySuccess: false, errorMessage: "An Error occurred while saving your Sticky. Please contact IT for help."});
+                }            
             }
             )
     }
 
     render() {
-        console.log("stickySuccess: "+this.state.stickySuccess)
         if(this.state.stickySuccess) {
             return(
                 <Fragment>
@@ -73,6 +67,7 @@ class AddSticky extends Component {
         else {
             return(
                     <Fragment>
+                        <h5>{this.state.errorMessage}</h5>
                         <h2>Add Sticky Note</h2>
                         {this.form()}
                     </Fragment>

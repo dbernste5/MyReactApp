@@ -9,31 +9,28 @@ import Menu from './Menu';
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state= {loggedIn:false, userID: -1};
+		this.state= {loggedIn:false};
 	}
 
 	render() {
-	console.log("In app UserID: "+this.state.userID);
 	return (
 
-			<Fragment >
-				<table>
-					<tr>
-						<td>
-					<Header/>
+		<Fragment >
+			<table>
+				<tr>
+					<td>
+						<Header/>
 					</td>
 					<td>
-					<Menu loggedIn= {this.state.loggedIn}/>
+						<Menu loggedIn= {this.state.loggedIn}/>
 					</td>
-					</tr>
-					</table>
-					<Main setUserID= {(ID)=>{this.setState({userID: ID})}}
-								userID = {this.state.userID}
-								logInUser={()=>{this.setState({loggedIn: true})}}
-								logoutUser={()=>{this.setState({loggedIn:false})}}/>
-					
-					<Footer/>
-			</Fragment>
+				</tr>
+			</table>
+			<Main 	logInUser={()=>{this.setState({loggedIn: true})}}
+					logoutUser={()=>{this.setState({loggedIn:false})}}
+					loggedIn= {this.state.loggedIn}/>
+			<Footer/>
+		</Fragment>
 		);
 	}
 }

@@ -73,6 +73,7 @@ class SignUp extends Component {
             this.setState({passwordConfirmed: true});
        }
     }
+    
     onSubmitForm(event) {
         event.preventDefault();
         
@@ -94,18 +95,14 @@ class SignUp extends Component {
                 else {
                     this.setState({duplicateUsername: false});
                 }
-                console.log('response: ', response.status);
-            
-            response.json()}
-            )
-            console.log("After fetch");
+            })
         }
 
     }
     render() {
         //user signed up successfully, now redirect to the login page
         if(this.state.signUpSuccess) {
-            return <Redirect to='/LoginPage'/>;
+            return <Redirect to='/SignUpSuccess'/>;
         }
         else if(this.state.duplicateUsername) {
             return(

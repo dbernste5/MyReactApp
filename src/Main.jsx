@@ -3,22 +3,23 @@ import { Switch, Route } from 'react-router-dom'
 import LoginPage from './LoginPage';
 import SignUp from './SignUp';
 import Home from './Home';
-import Logout from './Logout';
 import AddSticky from './addSticky';
 import StickyView from './StickyView';
+import SignUpSuccess from './SignUpSuccess';
 
 const Main=(props)=>(
 
   <main>
     <Switch>
       <Route path='/LoginPage'  
-        render={() => <LoginPage logInUser={props.logInUser} setUserID = {props.setUserID}/>} />
-      <Route path='/addSticky'
-        render={() => <AddSticky userID={props.userID}/>}/>
+        render={() => <LoginPage  logInUser={props.logInUser}
+                                  logoutUser={props.logoutUser}
+                                  loggedIn= {props.loggedIn} />} />
+      <Route path='/addSticky' component={AddSticky}/>
       <Route path='/SignUp' component={SignUp}/>
       <Route path='/Home' component={Home}/>
-      <Route path='/Logout' render={()=><Logout logoutUser={props.logoutUser}/>}/>
-      <Route path='/viewStickies' render={() => <StickyView userID={props.userID}/>}/> 
+      <Route path='/viewStickies' component={StickyView}/>
+      <Route path='/SignUpSuccess' component={SignUpSuccess}/> 
     </Switch>
   </main>
 ) 

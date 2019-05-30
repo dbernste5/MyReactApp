@@ -7,6 +7,8 @@ class Home extends Component {
 	
     render() {
 
+        //change this to call to Spring to verify that the user is logged in 
+        //by checking the cooking against the sessions hashmap
         if(Cookies.get('sessionId')!=null) {
             return (
 
