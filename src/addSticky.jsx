@@ -18,12 +18,12 @@ class AddSticky extends Component {
 
     form() {
         return(
-        <form id="addStickyForm" onSubmit={this.onSubmitForm}>
+        <form  onSubmit={this.onSubmitForm}>
             <label>Title</label><br/>
             <input id="title" type="text" onChange={event => this.onChangeTitle(event)} required='true'></input><br/><br/>
             <label>Body</label><br/>
-            <textarea id="body"  rows='15' cols='50' onChange={event => this.onChangeBody(event)} required='true'></textarea><br/><br/>
-            <button id= "addStickySubmit" type="submit" >Add Sticky</button>
+            <textarea   rows='15' cols='50' onChange={event => this.onChangeBody(event)} required='true'></textarea><br/><br/>
+            <button  type="submit" >Add Sticky</button>
         </form>)
     }
     onChangeTitle(event) {

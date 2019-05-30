@@ -15,9 +15,9 @@ const Menu = (props) => {
 
         return(
             <ul>
-                <li class='menu'> <Link to='/Home'>Home</Link> </li>
-                <li class='menu'> <Link to='/LoginPage'>{label}</Link> </li>
-                <li class='menu'> <Link to='/SignUp'>SignUp</Link> </li>
+                <li> <Link to='/Home'id='menu'>Home</Link> </li>
+                <li> <Link to='/LoginPage' id='menu'>{label}</Link> </li>
+                <li> <Link to='/SignUp'  id='menu'>SignUp</Link> </li>
             </ul>
         );
     };

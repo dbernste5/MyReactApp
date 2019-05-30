@@ -15,22 +15,25 @@ class App extends Component {
 	render() {
 	return (
 
-		<Fragment >
+		<div id='container'>
 			<table>
 				<tr>
 					<td>
 						<Header/>
 					</td>
-					<td>
+					<td class='menuRow'> 
 						<Menu loggedIn= {this.state.loggedIn}/>
 					</td>
 				</tr>
 			</table>
-			<Main 	logInUser={()=>{this.setState({loggedIn: true})}}
-					logoutUser={()=>{this.setState({loggedIn:false})}}
-					loggedIn= {this.state.loggedIn}/>
+			<div id='body'>
+				<Main 
+						logInUser={()=>{this.setState({loggedIn: true})}}
+						logoutUser={()=>{this.setState({loggedIn:false})}}
+						loggedIn= {this.state.loggedIn}/>
+			</div>
 			<Footer/>
-		</Fragment>
+		</div>
 		);
 	}
 }

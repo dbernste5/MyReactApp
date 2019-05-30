@@ -69,6 +69,7 @@ class LoginPage extends Component {
                     <input id="password" type="password" onChange={event => this.onChangePassword(event)}></input><br/><br/>
                     <button id= "LoginSubmit" type="submit" >Login</button>
                 </form>
+                <br/>
                 <Link to='/SignUp'>New User? Sign up</Link>
             </Fragment>
         );

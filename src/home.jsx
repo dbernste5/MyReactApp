@@ -15,8 +15,8 @@ class Home extends Component {
                 <Fragment>
                     <h1>Home page: {Cookies.get('userName')} </h1>
                     <ul>
-                        <li class='menu'><Link to='/addSticky'>Add Sticky</Link></li> 
-                        <li class='menu'><Link to='/viewStickies'>View Stickies Here</Link></li>
+                        <li><Link to='/addSticky' id='menu'>Add Sticky</Link></li> 
+                        <li><Link to='/viewStickies' id='menu'>View Stickies Here</Link></li>
                     </ul>
                 </Fragment>
                 );

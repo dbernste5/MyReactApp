@@ -2,7 +2,7 @@ import React from 'react';
 import stickiesLogo from './stickiesLogo.jpg';
 
 const Header = ()=> (
-    <header>               
+    <header id='header'>               
         <img src={stickiesLogo} alt="stickiesLogo" ></img>
     </header>      
 )

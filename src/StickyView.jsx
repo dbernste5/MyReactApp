@@ -41,7 +41,7 @@ class StickyView extends Component {
                                     }
                                 }
                             }
-                        this.state.stickyList.push( <a href='#' ><h5>{title}</h5> <p>{body}</p></a>);
+                        this.state.stickyList.push( <a  id= 'stickydisplay' href='#' ><h5>{title}</h5> <p>{body}</p></a>);
                         }
                     }
                     this.setState({showStickies: true });
@@ -66,7 +66,7 @@ class StickyView extends Component {
                 <Fragment>
                     <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css"/> 
                     <h3>Stickies for {Cookies.get('userName')}</h3><br/>
-                    <ul id='stickydisplay'>
+                    <ul>
                         {this.list2} 
                    </ul>
                    <br/><Link to='/addSticky'>Add New Sticky</Link>
