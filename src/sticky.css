@@ -1,4 +1,4 @@
-*{
+  *{
     margin:0;
     padding:0;
   }
@@ -118,7 +118,9 @@
 
   /*set the hover and focus for all the stickynotes and the menu items
   we specify each one since the stickydisplay and menu are specific ids and 
-  therefore would otherwise override thebelow code unless we specify the ul li:nth-child....*/
+  therefore would otherwise override thebelow code unless we specify the ul li:nth-child....
+  ideally this should probably be changed so that all this extra code is unneccessary but due to time constraints
+  we will leave it like this as it does work.*/
   ul li:nth-child(5n) #stickydisplay:hover, ul li:nth-child(5n) #stickydisplay:focus,
   ul li:nth-child(5n) #menu:hover,  ul li:nth-child(5n)#menu:focus,
   ul li:nth-child(3n) #stickydisplay:hover,  ul li:nth-child(3n) #stickydisplay:focus,
