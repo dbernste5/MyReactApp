@@ -113,7 +113,14 @@
     top:-10px;
   }
 
-  #stickydisplay:hover, #stickydisplay:focus, #menu:hover, #menu:focus{
+  ul li:nth-child(5n) #stickydisplay:hover, ul li:nth-child(5n) #stickydisplay:focus,
+  ul li:nth-child(5n) #menu:hover,  ul li:nth-child(5n)#menu:focus,
+  ul li:nth-child(3n) #stickydisplay:hover,  ul li:nth-child(3n) #stickydisplay:focus,
+  ul li:nth-child(3n) #menu:hover,    ul li:nth-child(3n)#menu:focus,
+  ul li:nth-child(even) #stickydisplay:hover,  ul li:nth-child(even) #stickydisplay:focus,
+  ul li:nth-child(even) #menu:hover,    ul li:nth-child(even) #menu:focus,
+  #stickydisplay:hover, #stickydisplay:focus,
+  #menu:hover, #menu:focus{
     box-shadow:10px 10px 7px rgba(0,0,0,.7);
     -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
     -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
