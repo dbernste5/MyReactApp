@@ -22,6 +22,7 @@
     overflow:hidden;
     padding:3em;
   }
+
   #menu {
     text-decoration:none;
     color: #000;
@@ -32,7 +33,7 @@
     padding:1em;
     margin:1em;
     float:left;
-    /*box shadow and tilt support for various browsers*/
+    /*box shadow and transform support for various browsers*/
     -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
     -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
@@ -57,6 +58,7 @@
     height: 10em;
     width:10em;
     padding:1em;
+    /*box shadow and transform support for various browsers*/
     -moz-box-shadow:2.5px 2.5px 4px rgba(33,33,33,1);
     -webkit-box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);
     box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);
@@ -86,6 +88,7 @@
     font-size:180%;
   }
  
+  /*give the effect of random notes with random colors and tilts*/
   ul li:nth-child(even) #stickydisplay, ul li:nth-child(even) #menu {
     transform: rotate(4deg);
     -o-transform:rotate(4deg);
@@ -113,6 +116,9 @@
     top:-10px;
   }
 
+  /*set the hover and focus for all the stickynotes and the menu items
+  we specify each one since the stickydisplay and menu are specific ids and 
+  therefore would otherwise override thebelow code unless we specify the ul li:nth-child....*/
   ul li:nth-child(5n) #stickydisplay:hover, ul li:nth-child(5n) #stickydisplay:focus,
   ul li:nth-child(5n) #menu:hover,  ul li:nth-child(5n)#menu:focus,
   ul li:nth-child(3n) #stickydisplay:hover,  ul li:nth-child(3n) #stickydisplay:focus,
