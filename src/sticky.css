@@ -36,9 +36,11 @@
     -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
     -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    transition: transform .15s linear;
     -moz-transition:-moz-transform .15s linear;
     -o-transition:-o-transform .15s linear;
     -webkit-transition:-webkit-transform .15s linear;
+    transform: rotate(-6deg);
     -webkit-transform: rotate(-6deg);
     -o-transform: rotate(-6deg);
     -moz-transform:rotate(-6deg);
@@ -58,9 +60,11 @@
     -moz-box-shadow:2.5px 2.5px 4px rgba(33,33,33,1);
     -webkit-box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);
     box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);
+    transition: transform .15s linear;
     -moz-transition:-moz-transform .15s linear;
     -o-transition:-o-transform .15s linear;
     -webkit-transition:-webkit-transform .15s linear;
+    transform: rotate(-6deg);
     -webkit-transform: rotate(-6deg);
     -o-transform: rotate(-6deg);
     -moz-transform:rotate(-6deg);
@@ -82,7 +86,8 @@
     font-size:180%;
   }
  
-  ul li:nth-child(even) #stickydisplay {
+  ul li:nth-child(even) #stickydisplay, ul li:nth-child(even) #menu {
+    transform: rotate(4deg);
     -o-transform:rotate(4deg);
     -webkit-transform:rotate(4deg);
     -moz-transform:rotate(4deg);
@@ -90,7 +95,8 @@
     top:5px;
     background:#cfc;
   }
-  ul li:nth-child(3n) #stickydisplay {
+  ul li:nth-child(3n) #stickydisplay, ul li:nth-child(3n) #menu {
+    transform: rotate(-3deg);
     -o-transform:rotate(-3deg);
     -webkit-transform:rotate(-3deg);
     -moz-transform:rotate(-3deg);
@@ -98,7 +104,8 @@
     top:-5px;
     background:#ccf;
   }
-  ul li:nth-child(5n) #stickydisplay {
+  ul li:nth-child(5n) #stickydisplay, ul li:nth-child(5n) #menu {
+    transform: rotate(5deg);
     -o-transform:rotate(5deg);
     -webkit-transform:rotate(5deg);
     -moz-transform:rotate(5deg);
@@ -106,35 +113,11 @@
     top:-10px;
   }
 
-  
-  ul li:nth-child(even) #menu {
-    -o-transform:rotate(4deg);
-    -webkit-transform:rotate(4deg);
-    -moz-transform:rotate(4deg);
-    position:relative;
-    top:5px;
-    background:#cfc;
-  }
-  ul li:nth-child(3n) #menu {
-    -o-transform:rotate(-3deg);
-    -webkit-transform:rotate(-3deg);
-    -moz-transform:rotate(-3deg);
-    position:relative;
-    top:-5px;
-    background:#ccf;
-  }
-  ul li:nth-child(5n) #menu {
-    -o-transform:rotate(5deg);
-    -webkit-transform:rotate(5deg);
-    -moz-transform:rotate(5deg);
-    position:relative;
-    top:-10px;
-  }
-
-  ul li a:hover,ul li a:focus{
+  #stickydisplay:hover, #stickydisplay:focus, #menu:hover, #menu:focus{
     box-shadow:10px 10px 7px rgba(0,0,0,.7);
     -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
     -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(1.25);
     -webkit-transform: scale(1.25);
     -moz-transform: scale(1.25);
     -o-transform: scale(1.25);
@@ -148,8 +131,7 @@
     height: 50px;
     background-color: #A9A9A9;
     width: 100%;
-    padding-top: 8px; 
-    /*padding-left: 3em;*/
+    padding-top: 8px;
   }
   
   #body{
@@ -166,6 +148,19 @@
   #container{
     min-height: 100vh;
     position: relative;
+  }
+
+  .buttons{
+    text-decoration: none;
+    font-size: 75%;
+    color: #000;
+    background: antiquewhite;
+    padding: 5px;
+    margin-top: 10em;
+    margin-bottom: 10em;
+    -moz-box-shadow:2.5px 2.5px 4px rgba(33,33,33,1);
+    -webkit-box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);
+    box-shadow: 2.5px 2.5px 4px rgba(33,33,33,.7);
   }
 
  

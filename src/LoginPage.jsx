@@ -70,7 +70,7 @@ class LoginPage extends Component {
                     <button id= "LoginSubmit" type="submit" >Login</button>
                 </form>
                 <br/>
-                <Link to='/SignUp'>New User? Sign up</Link>
+                <Link to='/SignUp' class='buttons'>New User? Sign up</Link>
             </Fragment>
         );
     }

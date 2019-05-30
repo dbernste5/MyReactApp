@@ -4,14 +4,37 @@ import { Redirect } from 'react-router';
 import {Link }from 'react-router-dom';
 
 class Home extends Component {
-	
-    render() {
+    
+    constructor(props) {
+        super(props);
+        this.state={ loggedIn: true}; 
+        /*setting it to true so that we will be able to get to the componentDidMount to check if user is logged in
+        this is not ideal since the home page ends up flashing if the user is not logged in- 
+        before it realizes that it shud redirect, but we couldn't find another way that it would work since
+        it was rendering before the fetch promise was resolved to a response so it was never able to set the state to true.
+        this way it will always be true and we only set it to false once the response comes back*/
+    }
 
-        //change this to call to Spring to verify that the user is logged in 
-        //by checking the cooking against the sessions hashmap
-        if(Cookies.get('sessionId')!=null) {
+
+    componentDidMount(){
+        fetch("/validUser", {method: "POST"})
+        .then((response)=>{
+            if(response.status===200) {
+                this.setState({loggedIn: true});  
+                console.log('in the if');                 
+            }
+            else {
+                this.setState({loggedIn: false});
+                console.log('in the else');
+            }
+        }); 
+    }
+
+    render() { 
+        console.log(' after fetch, before the if/return. loggedIn: '+this.state.loggedIn);
+        if(this.state.loggedIn) {
+            //logged in, show home page
             return (
-
                 <Fragment>
                     <h1>Home page: {Cookies.get('userName')} </h1>
                     <ul>
@@ -20,14 +43,10 @@ class Home extends Component {
                     </ul>
                 </Fragment>
                 );
-                
         }
-        else{
+        else {
             return <Redirect to='/LoginPage'/>;
-        }
-        
-        
-    }
-    
+        }         
+    } 
 }
 export default Home;

@@ -58,8 +58,11 @@ class AddSticky extends Component {
             return(
                 <Fragment>
                     <h2>Add Sticky Note</h2>
-                    <h5>Sticky added successfully!</h5>
-                    <Link to='/viewStickies'>View Stickies Here</Link>
+                    <br/>
+                    <h4>Sticky added successfully!</h4>
+                    <br/>
+                    <Link to='/viewStickies' class='buttons'>View Stickies Here</Link>
+                    <br/><br/>
                     {this.form()}
                 </Fragment>
             )

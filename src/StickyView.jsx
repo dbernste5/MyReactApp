@@ -66,10 +66,12 @@ class StickyView extends Component {
                 <Fragment>
                     <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css"/> 
                     <h3>Stickies for {Cookies.get('userName')}</h3><br/>
+                    <Link to='/addSticky' class='buttons'>Add New Sticky</Link>
+                    <br/>
                     <ul>
                         {this.list2} 
                    </ul>
-                   <br/><Link to='/addSticky'>Add New Sticky</Link>
+                  
                 </Fragment>
             )
         }
