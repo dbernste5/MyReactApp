@@ -20,18 +20,15 @@ class Home extends Component {
         fetch("/validUser", {method: "POST"})
         .then((response)=>{
             if(response.status===200) {
-                this.setState({loggedIn: true});  
-                console.log('in the if');                 
+                this.setState({loggedIn: true});                  
             }
             else {
                 this.setState({loggedIn: false});
-                console.log('in the else');
             }
         }); 
     }
 
     render() { 
-        console.log(' after fetch, before the if/return. loggedIn: '+this.state.loggedIn);
         if(this.state.loggedIn) {
             //logged in, show home page
             return (
