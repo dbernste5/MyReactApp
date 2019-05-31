@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 const SignUpSuccess =()=>(
     <Fragment>
         <h1>Sign Up Successful!</h1>
-        <Link to='LoginPage'>Please LOGIN to continue</Link>
+        <br/>
+        <br/>
+        <Link to='LoginPage' class='buttons'>Please LOGIN to continue</Link>
     </Fragment>
 );
 
