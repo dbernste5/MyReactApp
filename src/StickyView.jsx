@@ -8,7 +8,8 @@ class StickyView extends Component {
         super(props);
         this.state = { 
             showStickies: false,
-            stickyList: []
+            stickyList: [],
+            stickiesToDelete: []
         };
         this.fetchStickies = this.fetchStickies.bind(this);
     }
@@ -30,6 +31,7 @@ class StickyView extends Component {
                     for(var key in data) {
                         var title;
                         var body;
+                        var stickyID;
                         if (data.hasOwnProperty(key)) {
                             var value = data[key];
                             for (var k in value) {
@@ -38,10 +40,12 @@ class StickyView extends Component {
                                         title = value[k];
                                     }else if(k ==="Body"){
                                         body = value[k];
+                                    }else if(k ==="StickyId") {
+                                        stickyID = value[k];
                                     }
                                 }
                             }
-                        this.state.stickyList.push( <a  id= 'stickydisplay' href='#' ><h5>{title}</h5> <p>{body}</p></a>);
+                        this.state.stickyList.push( <a  id= 'stickydisplay' href='#' ><input type = 'checkbox' onChange='onChangeStickyChecked' value={stickyID}/><h5>{title}</h5> <p>{body}</p></a>);
                         }
                     }
                     this.setState({showStickies: true });
@@ -59,6 +63,24 @@ class StickyView extends Component {
     
     }
 
+    onChangeStickyChecked(event) {
+       if(event.target.value.checked === true)
+       {
+           //needs to be deleted
+
+       }  
+       else {
+           //needs to removed from the delete list
+       }
+    }
+
+    onDeleteStickies() {
+        //send the checked sticky ID's to the DB to delete
+        //confirm with the user first.
+        
+    }
+
+
     render() {
         if(this.state.showStickies) {
             this.list2 = this.state.stickyList.map(s=> <li >{s}</li>);
@@ -67,6 +89,7 @@ class StickyView extends Component {
                     <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css"/> 
                     <h3>Stickies for {Cookies.get('userName')}</h3><br/>
                     <Link to='/addSticky' class='buttons'>Add New Sticky</Link>
+                    <button onclick='onDeleteStickies' class='buttons'>Delete Selected Stickies</button>
                     <br/>
                     <ul>
                         {this.list2} 
