@@ -47,7 +47,7 @@ class StickyView extends Component {
                                     }
                                 }
                             }
-                        this.state.stickyList.push( <a  id= 'stickydisplay' href='#' ><input type = 'checkbox' onChange={event=>this.onChangeStickyChecked(event)} name={stickyID}/><h5>{title}</h5> <p>{body}</p></a>);
+                        this.state.stickyList.push( <a  id= 'stickydisplay' href='#' ><input type = 'checkbox'  className='checkbox'onChange={event=>this.onChangeStickyChecked(event)} name={stickyID}/><h5>{title}</h5> <p>{body}</p></a>);
                         }
                     }
                     this.setState({showStickies: true });
@@ -70,37 +70,62 @@ class StickyView extends Component {
         let item =event.target.name;
         console.log("Name: "+item);
         console.log("IsChecked: "+isChecked);
-        if(isChecked)
-        {
-           this.state.stickiesToDelete.push(item);     
+        if(isChecked){
+           //add to the list
+            this.state.stickiesToDelete.push(item);     
+        }
+        else {
+            //remove from the list
+            var index = this.state.stickiesToDelete.indexOf(item);
+            if (index > -1) {
+                this.state.stickiesToDelete.splice(index, 1);
+            }
         }       
     }
 
     onDeleteStickies() {
-       console.log(this.state.stickiesToDelete);
-         //confirm with the user first.
-       let confirmed = window.confirm("Are you sure you want to delete the selected stickies? ");
-        //send the checked sticky ID's to the DB to delete if confirmed
-        if(confirmed){
-            fetch("/deleteStickies", {
-                method: "POST",
-                body: JSON.stringify(this.state.stickiesToDelete),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then((response) => {
-                if(response.status === 200) {
-                    alert("delete successful.");
-                }
-                else if(response.status === 401) {
-                   alert("delete unsuccessful.");
+       if(this.state.stickiesToDelete.length < 1) {
+            //there are no stickies
+            window.alert("Please select the stickies you would like to delete.");
+            
+       }
+       else {
+            //confirm with the user first.
+            let confirmed = window.confirm("Are you sure you want to delete the selected stickies? ");
+                //send the checked sticky ID's to the DB to delete if confirmed
+                if(confirmed){
+                    fetch("/deleteStickies", {
+                        method: "POST",
+                        body: JSON.stringify(this.state.stickiesToDelete),
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    }).then((response) => {
+                        if(response.status === 200) {
+                            alert("delete successful.");
+                                        
+                            //make sure they all appear unchecked
+                            var stickiesToUncheck = document.getElementsByClassName("checkbox");                        
+                            for(var i=0; i<stickiesToUncheck.length; i++) {
+                                stickiesToUncheck[i].checked = false; 
+                            }       
+                            
+                            //refresh the page, clear the stickies and fetch them again
+                            this.state.stickyList = [];
+                            this.fetchStickies();
+                            //also clear the stickies to delete list
+                            this.state.stickiesToDelete = [];
+                        }
+                        else if(response.status === 401) {
+                        alert("delete unsuccessful.");
+                        }
+
+                    })
+                } else {
+                    //uncheck the checkboxes
+                    this.setState({stickiesToDelete: []});
                 }
 
-            })
-        } else {
-            //uncheck the checkboxes
-            this.setState({stickiesToDelete: []});
-s
         }
         
     }
@@ -113,10 +138,8 @@ s
                 <Fragment>
                     <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css"/> 
                     <h3>Stickies for {Cookies.get('userName')}</h3><br/>
-                    <Link to='/addSticky' class='buttons'>Add New Sticky</Link>
-                    <br/>
+                    <Link to='/addSticky' class='buttons'>Add New Sticky</Link><br/><br/>
                     <button onClick={this.onDeleteStickies} class='buttons'>Delete Selected Stickies</button>
-                    <br/>
                     <ul>
                         {this.list2} 
                    </ul>
