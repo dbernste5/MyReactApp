@@ -33,7 +33,7 @@ class Home extends Component {
             //logged in, show home page
             return (
                 <Fragment>
-                    <h1>Home page: {Cookies.get('userName')} </h1>
+                    <h1>Welcome {Cookies.get('userName')}! </h1>
                     <ul>
                         <li><Link to='/addSticky' id='menu'>Add Sticky</Link></li> 
                         <li><Link to='/viewStickies' id='menu'>View Stickies Here</Link></li>

@@ -9,7 +9,8 @@ class StickyView extends Component {
         this.state = { 
             showStickies: false,
             stickyList: [],
-            stickiesToDelete: []
+            stickiesToDelete: [],
+            userMsg: ''
         };
         this.fetchStickies = this.fetchStickies.bind(this);
         this.onDeleteStickies = this.onDeleteStickies.bind(this);
@@ -66,10 +67,9 @@ class StickyView extends Component {
     }
 
     onChangeStickyChecked(event) {
+        this.setState({userMsg: ''});
         let isChecked =event.target.checked;
         let item =event.target.name;
-        console.log("Name: "+item);
-        console.log("IsChecked: "+isChecked);
         if(isChecked){
            //add to the list
             this.state.stickiesToDelete.push(item);     
@@ -86,8 +86,7 @@ class StickyView extends Component {
     onDeleteStickies() {
        if(this.state.stickiesToDelete.length < 1) {
             //there are no stickies
-            window.alert("Please select the stickies you would like to delete.");
-            
+            this.setState({ userMsg: "Please select the stickies you would like to delete."}); 
        }
        else {
             //confirm with the user first.
@@ -102,7 +101,7 @@ class StickyView extends Component {
                         }
                     }).then((response) => {
                         if(response.status === 200) {
-                            alert("delete successful.");
+                            this.setState({userMsg: "Stickies successfully deleted."});
                                         
                             //make sure they all appear unchecked
                             var stickiesToUncheck = document.getElementsByClassName("checkbox");                        
@@ -117,13 +116,17 @@ class StickyView extends Component {
                             this.state.stickiesToDelete = [];
                         }
                         else if(response.status === 401) {
-                        alert("delete unsuccessful.");
+                        this.setState({userMsg: "An error occurred, unable to delete stickies. Please contact IT"});
                         }
 
                     })
                 } else {
                     //uncheck the checkboxes
                     this.setState({stickiesToDelete: []});
+                    var stickiesToUncheck = document.getElementsByClassName("checkbox");                        
+                    for(var i=0; i<stickiesToUncheck.length; i++) {
+                        stickiesToUncheck[i].checked = false; 
+                    }
                 }
 
         }
@@ -137,9 +140,15 @@ class StickyView extends Component {
             return(
                 <Fragment>
                     <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css"/> 
-                    <h3>Stickies for {Cookies.get('userName')}</h3><br/>
-                    <Link to='/addSticky' class='buttons'>Add New Sticky</Link><br/><br/>
-                    <button onClick={this.onDeleteStickies} class='buttons'>Delete Selected Stickies</button>
+                    <h3>{Cookies.get('userName')}'s Stickies</h3><br/>
+                   <div>
+                        <Link to='/addSticky' class='buttons'>Add New Sticky</Link><br/><br/>
+                        <button onClick={this.onDeleteStickies} class='buttons'>Delete Selected Stickies</button>
+                        <br/><br/>
+                        <Link to='/EditStickies' class='buttons'>Edit My Stickies</Link>
+                    </div>
+                    <br/><br/>
+                    <h3>{this.state.userMsg}</h3>
                     <ul>
                         {this.list2} 
                    </ul>

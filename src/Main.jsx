@@ -6,6 +6,7 @@ import Home from './Home';
 import AddSticky from './addSticky';
 import StickyView from './StickyView';
 import SignUpSuccess from './SignUpSuccess';
+import EditStickies from './EditStickies';
 
 const Main=(props)=>(
 
@@ -19,7 +20,8 @@ const Main=(props)=>(
       <Route path='/SignUp' component={SignUp}/>
       <Route path='/Home' component={Home}/>
       <Route path='/viewStickies' component={StickyView}/>
-      <Route path='/SignUpSuccess' component={SignUpSuccess}/> 
+      <Route path='/SignUpSuccess' component={SignUpSuccess}/>
+      <Route path='/EditStickies' component={EditStickies}/> 
     </Switch>
   </main>
 ) 

@@ -28,9 +28,11 @@ class AddSticky extends Component {
     }
     onChangeTitle(event) {
         this.setState({title: event.target.value});
+        this.setState({errorMessage: ''});
     }
     onChangeBody(event) {
         this.setState({body: event.target.value});
+        this.setState({errorMessage: ''});
     }
     
     onSubmitForm(event) {
@@ -45,6 +47,7 @@ class AddSticky extends Component {
                 if(response.status===200)
                 {
                     this.setState({stickySuccess: true});
+                    this.setState({errorMessage:"Sticky added successfully!"});
                 }
                 else{
                     this.setState({stickySuccess: false, errorMessage: "An Error occurred while saving your Sticky. Please contact IT for help."});
@@ -59,7 +62,7 @@ class AddSticky extends Component {
                 <Fragment>
                     <h2>Add Sticky Note</h2>
                     <br/>
-                    <h4>Sticky added successfully!</h4>
+                    <h4>{this.state.errorMessage}</h4>
                     <br/>
                     <Link to='/viewStickies' class='buttons'>View Stickies Here</Link>
                     <br/><br/>
